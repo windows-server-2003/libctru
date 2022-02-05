@@ -4,8 +4,8 @@
 #include <3ds/os.h>
 #include <3ds/result.h>
 
-#define HEAP_SPLIT_SIZE_CAP  (24 << 20) // 24MB
-#define LINEAR_HEAP_SIZE_CAP (32 << 20) // 32MB
+#define HEAP_SPLIT_SIZE_CAP  (28 << 20) // 28MB
+#define LINEAR_HEAP_SIZE_CAP (60 << 20) // 60MB
 
 extern char* fake_heap_start;
 extern char* fake_heap_end;
