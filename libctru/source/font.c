@@ -68,13 +68,17 @@ int fontGlyphIndexFromCodePoint(CFNT_s* font, u32 codePoint)
 				break;
 			}
 
-			int j;
-			for (j = 0; j < cmap->nScanEntries; j ++)
-				if (cmap->scanEntries[j].code == codePoint)
-					break;
-			if (j < cmap->nScanEntries)
+			int l = -1;
+			int r = cmap->nScanEntries;
+			while (r - l > 1)
 			{
-				ret = cmap->scanEntries[j].glyphIndex;
+				int middle = l + (r - l) / 2;
+				if (cmap->scanEntries[middle].code > codePoint) r = middle;
+				else l = middle; 
+			}
+			if (l >= 0 && cmap->scanEntries[l].code == codePoint)
+			{
+				ret = cmap->scanEntries[l].glyphIndex;
 				break;
 			}
 		}
